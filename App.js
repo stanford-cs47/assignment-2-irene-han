@@ -31,8 +31,10 @@ export default class App extends React.Component {
 
         <View style={styles.profile}>
           <View style={styles.profileCard}>
-            <Image style={styles.picture}
-            source={this.state.profileImage}/>
+            <View style={styles.imgContainer}>
+              <Image style={styles.picture, styles.profileImg}
+              source={this.state.profileImage}/>
+            </View>
             <View style={styles.textContainer}>
               <View style={styles.titleView}>
                 <Text style={{fontWeight: 'bold', fontSize: 24}}>{this.state.name},</Text>
@@ -96,6 +98,7 @@ const styles = StyleSheet.create({
     paddingLeft: '5%',
     paddingRight: '5%',
     justifyContent: 'center',
+    paddingBottom: '5%'
   },
   iconContainer: {
     flexDirection: 'row',
@@ -103,16 +106,30 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   profileCard: {
-    margin: 20,
+    margin: '5%',
     borderWidth: 1,
     borderColor: grey,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     flexDirection: 'column',
     backgroundColor: 'white',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    resizeMode: 'contain',
+  },
+  profileImg: {
+    width: '100%',
+    height: '100%',
+  },
+  imgContainer: {
+    overflow: 'hidden',
+    width: '100%',
+    aspectRatio: 1,
+    justifyContent: 'center',
   },
   textContainer: {
     padding: 10,
+    paddingBottom: -10
   },
   buttonContainer: {
     padding: 10,
