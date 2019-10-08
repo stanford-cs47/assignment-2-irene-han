@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Platform, SafeAreaView} from 'react-native';
 import { Images, Profiles } from './App/Themes';
+import Header from './App/Components/Header';
+import Footer from './App/Components/Footer';
 
 export default class App extends React.Component {
   constructor() {
@@ -18,18 +20,8 @@ export default class App extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.iconContainer}>
-            <Image style={styles.navIcons}
-            source={Images.settings}/>
-            <Image style={[styles.picture, styles.logo]}
-            source={Images.logo}/>
-            <Image style={styles.navIcons}
-            source={Images.chat}/>
-          </View>
-        </View>
-
-        <View style={styles.profile}>
+        <Header/>
+        <View style={styles.body}>
           <View style={styles.profileCard}>
             <View style={styles.imgContainer}>
               <Image style={styles.picture, styles.profileImg}
@@ -44,31 +36,7 @@ export default class App extends React.Component {
             </View>
           </View>
         </View>
-
-        <View style={styles.footer}>
-        <View style={styles.iconContainer}>
-          <View style={[styles.buttonSmall, styles.buttonContainer]}>
-            <Image style={styles.button}
-            source={Images.rewind}/>
-          </View>
-          <View style={[styles.buttonLarge, styles.buttonContainer]}>
-            <Image style={styles.button}
-            source={Images.nope}/>
-          </View>
-          <View style={[styles.buttonSmall, styles.buttonContainer]}>
-            <Image style={styles.button}
-            source={Images.boost}/>
-          </View>
-          <View style={[styles.buttonLarge, styles.buttonContainer]}>
-            <Image style={styles.button}
-            source={Images.like}/>
-          </View>
-          <View style={[styles.buttonSmall, styles.buttonContainer]}>
-            <Image style={styles.button}
-            source={Images.superLike}/>
-          </View>
-        </View>
-        </View>
+        <Footer/>
       </SafeAreaView>
     );
   }
@@ -83,27 +51,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: light_grey,
   },
-  header: {
-    height: Platform.OS === 'ios' ? 44 : 56,
-    borderBottomWidth: 1,
-    borderColor: grey,
-    paddingBottom: '1%',
-  },
-  profile: {
+  body: {
     height: "80%",
     justifyContent: 'center',
-  },
-  footer: {
-    height: "20%",
-    paddingLeft: '5%',
-    paddingRight: '5%',
-    justifyContent: 'center',
-    paddingBottom: '5%'
-  },
-  iconContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
   },
   profileCard: {
     margin: '5%',
@@ -130,39 +80,6 @@ const styles = StyleSheet.create({
   textContainer: {
     padding: 10,
     paddingBottom: -10
-  },
-  buttonContainer: {
-    padding: 10,
-    backgroundColor: 'white',
-    alignItems:'center',
-    justifyContent: 'center',
-  },
-  buttonLarge: {
-    height: 60,
-    width: 60,
-    borderRadius: 60/2,
-  },
-  buttonSmall: {
-    height: 50,
-    width: 50,
-    borderRadius: 50/2,
-  },
-  button: {
-    height: 40,
-    width: 40,
-    resizeMode: 'contain'
-  },
-  logo: {
-    flex: 1,
-    resizeMode: 'contain',
-    height: Platform.OS === 'ios' ? 34 : 46,
-  },
-  navIcons: {
-    flex: 1,
-    height: Platform.OS === 'ios' ? 35 : 35,
-    width: Platform.OS === 'ios' ? 35 : 35,
-    resizeMode: 'contain',
-    tintColor: grey,
   },
   titleView: {
     flexDirection: 'row',
